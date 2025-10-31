@@ -37,25 +37,38 @@ int main(void)
 //	*pClkCtrlReg = temp;			// write back
 
 	// Shorter version of the above 3 lines
-	*pClkCtrlReg = *pClkCtrlReg | 0x08;
+//	*pClkCtrlReg = *pClkCtrlReg | 0x08;
 
 	// More shorter version
 //	*pClkCtrlReg |= 0x08;
+
+	// now using lest shift operator <<
+	*pClkCtrlReg |= (1 << 3);
 
 
 
 // 2. configure the mode of the IO pin as output
 	// a. clear the 24th and 25th bit positions (CLEAR)
-	*pPortDModeReg &= 0xFCFFFFFF;
+//	*pPortDModeReg &= 0xFCFFFFFF;
+
+	// now using lest shift operator <<
+	*pPortDModeReg &= ~(3 << 24);
 
 	// b. make 24th bit position as 1 (SET)
-	*pPortDModeReg |= 0x01000000;
+//	*pPortDModeReg |= 0x01000000;
+
+	// now using lest shift operator <<
+	*pPortDModeReg |= (1 << 24);
+
+
 
 
 
 // 3. SET 12th bit of the output data register to make I/O pin-12 as HIGH.
-	*pPortDOutReg |= 0x1000;
+//	*pPortDOutReg |= 0x1000;
 
+	// now using lest shift operator <<
+	*pPortDOutReg |= (1 << 12);
 
 
 
