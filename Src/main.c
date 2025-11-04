@@ -52,13 +52,13 @@ int main(void)
 //	*pPortDModeReg &= 0xFCFFFFFF;
 
 	// now using lest shift operator <<
-	*pPortDModeReg &= ~(3 << 24);
+	*pPortDModeReg &= ~(3 << 26);
 
 	// b. make 24th bit position as 1 (SET)
 //	*pPortDModeReg |= 0x01000000;
 
 	// now using lest shift operator <<
-	*pPortDModeReg |= (1 << 24);
+	*pPortDModeReg |= (1 << 26);
 
 
 
@@ -68,7 +68,7 @@ int main(void)
 //	*pPortDOutReg |= 0x1000;
 
 	// now using lest shift operator <<
-	*pPortDOutReg |= (1 << 12);
+	*pPortDOutReg |= (1 << 13);
 
 
 
