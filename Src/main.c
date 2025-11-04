@@ -24,10 +24,11 @@
 
 int main(void)
 {
-    /* Loop forever */
+     /* Loop forever */
+	//  GPIOA PIN5 
 	uint32_t *pClkCtrlReg   = (uint32_t*)0x40023830;
-	uint32_t *pPortDModeReg = (uint32_t*)0x40020C00;
-	uint32_t *pPortDOutReg  = (uint32_t*)0x40020C14;
+	uint32_t *pPortAModeReg = (uint32_t*)0x40020000;
+	uint32_t *pPortAOutReg  = (uint32_t*)0x40020014;
 
 
 
@@ -42,8 +43,8 @@ int main(void)
 	// More shorter version
 //	*pClkCtrlReg |= 0x08;
 
-	// now using lest shift operator <<
-	*pClkCtrlReg |= (1 << 3);
+	// now using left shift operator <<
+	*pClkCtrlReg |= (1 << 0);
 
 
 
@@ -51,14 +52,14 @@ int main(void)
 	// a. clear the 24th and 25th bit positions (CLEAR)
 //	*pPortDModeReg &= 0xFCFFFFFF;
 
-	// now using lest shift operator <<
-	*pPortDModeReg &= ~(3 << 26);
+	// now using left shift operator <<
+	*pPortAModeReg &= ~(3 << 10);
 
 	// b. make 24th bit position as 1 (SET)
 //	*pPortDModeReg |= 0x01000000;
 
-	// now using lest shift operator <<
-	*pPortDModeReg |= (1 << 26);
+	// now using left shift operator <<
+	*pPortAModeReg |= (1 << 10);
 
 
 
@@ -68,8 +69,7 @@ int main(void)
 //	*pPortDOutReg |= 0x1000;
 
 	// now using lest shift operator <<
-	*pPortDOutReg |= (1 << 13);
-
+	*pPortAOutReg |= (1 << 5);
 
 
 	for(;;);
